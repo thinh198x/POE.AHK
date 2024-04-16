@@ -1,5 +1,4 @@
-﻿#IfWinActive, "Path of Exile"
-#MaxThreadsPerHotkey 10
+﻿#MaxThreadsPerHotkey 10
 #SingleInstance,Force
 vStatus := "OFF"
 myloop:
