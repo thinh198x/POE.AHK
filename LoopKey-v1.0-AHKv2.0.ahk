@@ -1,51 +1,55 @@
-﻿#HotIf WinActive("ahk_exe PathofExile.exe")
+#HotIf WinActive("ahk_exe PathofExile.exe")
 #MaxThreadsPerHotkey 10
 #SingleInstance Force
-
+global x := 100
+global y := 900
 global vMyStatus := "OFF"
 
-ToolTip vMyStatus, 100, 900
+CoordMode "Tooltip", "Screen"
+ToolTip vMyStatus, x, y
 
 SetTimer TimerLoop, 1000
 TimerLoop() {
-	global vMyStatus
+	global vMyStatus, x, y	
 	loop {
 		if (WinActive("ahk_exe PathofExile.exe"))
 		{
 			if (vMyStatus = "SLEEP")
 			{
 				vMyStatus := "ON"
-				ToolTip vMyStatus, 100, 900
+				CoordMode "Tooltip", "Screen"
+				ToolTip vMyStatus, x, y
 				myloop()
 			}
 		} else {
 			if (vMyStatus = "ON") {
 				vMyStatus := "SLEEP"
-				ToolTip vMyStatus, 100, 900
+				CoordMode "Tooltip", "Screen"
+				ToolTip vMyStatus, x, y
 			}
 		}
 	}
 }
 
 myloop() {
-	global vMyStatus
+	global vMyStatus, x, y
 	CoordMode "Tooltip", "Screen"
-	ToolTip vMyStatus, 100, 900
+	ToolTip vMyStatus, x, y
 	loop {
 		if (vMyStatus = "OFF")
 		{
 			exit
 		}
-		if (!WinActive("ahk_exe Skype.exe"))
+		if (!WinActive("ahk_exe PathofExile.exe"))
 		{
 			vMyStatus := "SLEEP"
 			CoordMode "Tooltip", "Screen"
-			ToolTip "SLEEP", 100, 900
+			ToolTip "SLEEP", x, y
 			Exit
 		}
 		Send "{t}"
 		CoordMode "Tooltip", "Screen"
-		ToolTip vMyStatus, 100, 900
+		ToolTip vMyStatus, x, y
 		sleep Random(1800, 1900)
 	}
 }
