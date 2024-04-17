@@ -3,7 +3,7 @@
 #SingleInstance Force
 
 ;Tên ứng dụng auto hoạt động
-global appName := "ahk_exe Skype.exe"
+global appName := "ahk_exe PathofExile.exe"
 ; KeyName: Phím cần loop, timeKey: Thời gian loop
 global keyName1 := "1", timeKey1 := 1000
 global keyName2 := "2", timeKey2 := 1000
